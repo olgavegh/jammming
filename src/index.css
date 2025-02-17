@@ -1,13 +1,82 @@
+:root {
+  --indigo-50: #eef2ff;
+  --indigo-100: #e0e7ff;
+  --indigo-200: #c7d2fe;
+  --indigo-300: #a5b4fc;
+  --indigo-400: #818cf8;
+  --indigo-500: #6366f1;
+  --indigo-600: #4f46e5;
+  --indigo-700: #4338ca;
+  --indigo-800: #3730a3;
+  --indigo-900: #312e81;
+
+  --blue-50: #cecdd6;
+  --blue-100: #b6b4c2;
+  --blue-200: #9d9bae;
+  --blue-300: #858299;
+  --blue-400: #6d6985;
+  --blue-500: #545071;
+  --blue-600: #3c365d;
+  --blue-700: #241d49;
+  --blue-800: #0c0535;
+  --blue-900: #000000;
+
+  --pink-50: #f3e0f7;
+  --pink-100: #e6c2ef;
+  --pink-200: #d9a3e7;
+  --pink-300: #cc85df;
+  --pink-400: #bf66d7;
+  --pink-500: #b247cf;
+  --pink-600: #a528c7;
+  --pink-700: #9819bf;
+  --pink-800: #8b0ab7;
+  --pink-900: #7e00af;
+
+  --primary-color: var(--indigo-500);
+  --primary-color-light: var(--indigo-300);
+  --primary-color-dark: var(--indigo-600);
+  --neutral-color-light: var(--indigo-50);
+  --neutral-color-dark: var(--blue-800);
+  --accent-color: var(--pink-500);
+}
+* {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+input,
+button {
+  outline: none;
+  border: none;
+  &:focus {
+    /* glow effect */
+    box-shadow: 0 0 0 3px var(--primary-color-dark),
+      0 0 10px var(--primary-color-dark);
+  }
+}
+
+button {
+  cursor: pointer;
+  display: inline-block;
+  width: fit-content;
+  margin-top: 2em;
+  padding: 1em 3em;
+  border-radius: 999px;
+  background-color: var(--primary-color);
+  color: var(--neutral-color-light);
+  text-transform: uppercase;
 }

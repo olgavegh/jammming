@@ -22,6 +22,9 @@ In this project, I will build a React web application called Jammming. I will us
 
 ## Steps
 
-- [x] Set Up My Local Environment
+- [x] Set Up Local Environment
 - using create-react-app from parent directory - `npx create-react-app jamming`
 - start a development from project root - `npm start`
+
+- [x] Create Static Components
+- Core components of the interface: App, SearchBar, SearchResults, Playlist, Tracklist, Track. These components should be static and may contain mock data. At this point focus on how components will interact with the data rather than on how they will retrieve data from APIs.

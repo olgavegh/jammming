@@ -1,0 +1,32 @@
+.body {
+  background-image: url("./background_photo_desktop.jpg");
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+}
+main {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.header {
+  background-color: #0c0535;
+  background-color: var(--neutral-color-dark);
+
+  text-align: center;
+  padding: 1vmin 1rem;
+}
+
+.logo {
+  height: 4vmin;
+  pointer-events: none;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20vmin 0;
+}
