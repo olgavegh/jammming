@@ -27,7 +27,7 @@ function App() {
     },
   ]);
 
-  const [playlistName, setplaylistName] = useState("My Playlist");
+  const [playlistName, setPlaylistName] = useState("My Custom Playlist");
 
   const [playlistTracks, setplaylistTracks] = useState([
     {
@@ -54,6 +54,10 @@ function App() {
     );
   }, []);
 
+  const updatePlaylistName = useCallback((name) => {
+    setPlaylistName(name);
+  }, []);
+
   return (
     <div className={styles.body}>
       <header className={styles.header}>
@@ -68,8 +72,9 @@ function App() {
         <div className={styles.appContent}>
           <SearchResults results={searchResults} onAdd={addTrack} />
           <Playlist
-            name={playlistName}
-            list={playlistTracks}
+            playlistName={playlistName}
+            playlistTracks={playlistTracks}
+            onNameChange={updatePlaylistName}
             onRemove={removeTrack}
           />
         </div>

@@ -45,3 +45,6 @@ In this project, I will build a React web application called Jammming. I will us
 - [x] Implement Removing Songs From a Custom Playlist
 - Users should be able to remove songs from their custom playlists.
 - Each track in the playlist should have a "Remove" button, which, when clicked, removes the track from the playlist.
+
+- [x] Implement Playlist Renaming
+- Displaying the playlist title with the input element can allow users to click on the title of their playlist and edit it directly on the page.
