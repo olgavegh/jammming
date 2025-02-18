@@ -4,4 +4,8 @@
   border-bottom: 1.5px solid var(--text-color-op4);
 
   padding: 1rem 0;
+
+  h3 {
+    margin-bottom: 0.4rem;
+  }
 }

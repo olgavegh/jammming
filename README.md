@@ -28,3 +28,9 @@ In this project, I will build a React web application called Jammming. I will us
 
 - [x] Create Static Components
 - Core components of the interface: App, SearchBar, SearchResults, Playlist, Tracklist, Track. These components should be static and may contain mock data. At this point focus on how components will interact with the data rather than on how they will retrieve data from APIs.
+
+- [x] Implementing Track Listing in the Component Tree
+- In this step, ensure that search results from Spotify are properly displayed as a list of tracks.
+- The root component manages the search results state and passes data down the component tree.
+- Each track in the result list includes: 🎵 Song Name 🎤 Artist 💿 Album
+-
