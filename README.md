@@ -41,3 +41,7 @@ In this project, I will build a React web application called Jammming. I will us
 - [x] Implement Adding Songs To a Custom Playlist
 - Users should be able to add songs from the search results to their custom playlist.
 - Each track in the search results should have an "Add" button, which, when clicked, adds the track to the playlist only if it isn’t already present.
+
+- [x] Implement Removing Songs From a Custom Playlist
+- Users should be able to remove songs from their custom playlists.
+- Each track in the playlist should have a "Remove" button, which, when clicked, removes the track from the playlist.

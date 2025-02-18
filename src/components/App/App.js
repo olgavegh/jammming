@@ -3,6 +3,7 @@ import styles from "./App.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
+import { MdCropOriginal } from "react-icons/md";
 
 function App() {
   const [searchResults, setSearchResults] = useState([
@@ -38,21 +39,20 @@ function App() {
   ]);
 
   const addTrack = useCallback(
-    (newTrack) => {
-      setplaylistTracks((originalPlaylist) => {
-        const exists = originalPlaylist.some(
-          (savedTrack) => savedTrack.id === newTrack.id
-        );
-        // skip if duplaicated
-        if (exists) {
-          return originalPlaylist;
-        } else {
-          return [...originalPlaylist, newTrack];
-        }
-      });
+    (track) => {
+      if (playlistTracks.some((item) => item.id === track.id)) {
+        return;
+      }
+      setplaylistTracks([...playlistTracks, track]);
     },
     [playlistTracks]
   );
+
+  const removeTrack = useCallback((track) => {
+    setplaylistTracks((prevList) =>
+      prevList.filter((item) => item.id !== track.id)
+    );
+  }, []);
 
   return (
     <div className={styles.body}>
@@ -67,7 +67,11 @@ function App() {
         </div>
         <div className={styles.appContent}>
           <SearchResults results={searchResults} onAdd={addTrack} />
-          <Playlist name={playlistName} list={playlistTracks} />
+          <Playlist
+            name={playlistName}
+            list={playlistTracks}
+            onRemove={removeTrack}
+          />
         </div>
       </main>
     </div>
