@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import styles from "./App.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
@@ -30,12 +30,29 @@ function App() {
 
   const [playlistTracks, setplaylistTracks] = useState([
     {
-      id: 1,
+      id: 12,
       name: "1",
       artist: "2",
       album: "3",
     },
   ]);
+
+  const addTrack = useCallback(
+    (newTrack) => {
+      setplaylistTracks((originalPlaylist) => {
+        const exists = originalPlaylist.some(
+          (savedTrack) => savedTrack.id === newTrack.id
+        );
+        // skip if duplaicated
+        if (exists) {
+          return originalPlaylist;
+        } else {
+          return [...originalPlaylist, newTrack];
+        }
+      });
+    },
+    [playlistTracks]
+  );
 
   return (
     <div className={styles.body}>
@@ -49,7 +66,7 @@ function App() {
           <SearchBar placeholder="Enter a Song Title" />
         </div>
         <div className={styles.appContent}>
-          <SearchResults results={searchResults} />
+          <SearchResults results={searchResults} onAdd={addTrack} />
           <Playlist name={playlistName} list={playlistTracks} />
         </div>
       </main>

@@ -6,7 +6,7 @@ const SearchResults = (props) => {
   return (
     <div className={styles.SearchResults}>
       <h2>Results</h2>
-      <Tracklist tracks={props.results} />
+      <Tracklist tracks={props.results} onAdd={props.onAdd} />
     </div>
   );
 };

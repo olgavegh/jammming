@@ -37,3 +37,7 @@ In this project, I will build a React web application called Jammming. I will us
 - [x] Implement Playlists in The Component Tree
 - Users should be able to customize their playlist name and tracks, and the app should display the playlist title and selected tracks.
 - The data should flow unidirectionally from the root component (App.js) to relevant child components.
+
+- [x] Implement Adding Songs To a Custom Playlist
+- Users should be able to add songs from the search results to their custom playlist.
+- Each track in the search results should have an "Add" button, which, when clicked, adds the track to the playlist only if it isn’t already present.
