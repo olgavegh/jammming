@@ -1,0 +1,7 @@
+.track {
+  display: flex;
+  align-items: center;
+  border-bottom: 1.5px solid var(--text-color-op4);
+
+  padding: 1rem 0;
+}

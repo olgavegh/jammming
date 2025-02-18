@@ -24,6 +24,7 @@
 
 .searchIcon {
   color: var(--neutral-color-dark);
+
   width: var(--iconDim);
   height: var(--iconDim);
   margin-left: calc(0.5 * var(--iconDim));
@@ -47,12 +48,5 @@
 
   &:active {
     background-color: var(--neutral-color-light);
-  }
-}
-
-.submitButton {
-  background-color: var(--neutral-color-dark);
-  &:hover {
-    background-color: var(--primary-color);
   }
 }

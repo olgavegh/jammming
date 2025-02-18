@@ -45,11 +45,7 @@ const SearchBar = ({ placeholder = "Search...", onSearch }) => {
         />
       </div>
 
-      <button
-        type="submit"
-        className={styles.submitButton}
-        onClick={handleSubmit}
-      >
+      <button type="submit" className="primaryButton" onClick={handleSubmit}>
         Search
       </button>
     </form>
