@@ -45,6 +45,8 @@
   --text-color-op6: rgba(255, 255, 255, 0.6);
   --text-color-op4: rgba(255, 255, 255, 0.4);
   --text-color-op2: rgba(255, 255, 255, 0.2);
+
+  --border-bottom: 1.5px solid var(--text-color-op4);
 }
 * {
   box-sizing: border-box;

@@ -26,6 +26,17 @@ function App() {
     },
   ]);
 
+  const [playlistName, setplaylistName] = useState("My Playlist");
+
+  const [playlistTracks, setplaylistTracks] = useState([
+    {
+      id: 1,
+      name: "1",
+      artist: "2",
+      album: "3",
+    },
+  ]);
+
   return (
     <div className={styles.body}>
       <header className={styles.header}>
@@ -39,7 +50,7 @@ function App() {
         </div>
         <div className={styles.appContent}>
           <SearchResults results={searchResults} />
-          <Playlist />
+          <Playlist name={playlistName} list={playlistTracks} />
         </div>
       </main>
     </div>

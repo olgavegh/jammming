@@ -33,4 +33,7 @@ In this project, I will build a React web application called Jammming. I will us
 - In this step, ensure that search results from Spotify are properly displayed as a list of tracks.
 - The root component manages the search results state and passes data down the component tree.
 - Each track in the result list includes: 🎵 Song Name 🎤 Artist 💿 Album
--
+
+- [x] Implement Playlists in The Component Tree
+- Users should be able to customize their playlist name and tracks, and the app should display the playlist title and selected tracks.
+- The data should flow unidirectionally from the root component (App.js) to relevant child components.
