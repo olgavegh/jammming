@@ -60,3 +60,6 @@ In this project, I will build a React web application called Jammming. I will us
 - 3. Extract the token from the URL when Spotify redirects the user after login.
 - 4. Handle expiration (clear the token after it expires).
 - 5. If there's no token, redirect the user to Spotify's login page.
+
+- [x] Implement Spotify Search Request
+- Connect the search bar to Spotify's API, allowing users to search for tracks and display results.

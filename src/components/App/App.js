@@ -9,46 +9,30 @@ function App() {
   const [searchResults, setSearchResults] = useState([
     {
       id: 1,
-      name: "Blinding Lights",
+      name: "Example Song 1",
       artist: "The Weeknd",
       album: "After Hours",
     },
     {
       id: 2,
-      name: "Levitating",
+      name: "Example Song 2",
       artist: "Dua Lipa",
       album: "Future Nostalgia",
     },
     {
       id: 3,
-      name: "Save Your Tears",
+      name: "Example Song 2",
       artist: "The Weeknd",
       album: "After Hours",
     },
   ]);
 
   const [playlistName, setPlaylistName] = useState("New Playlist");
+  const [playlistTracks, setPlaylistTracks] = useState([]);
 
-  const [playlistTracks, setPlaylistTracks] = useState([
-    {
-      id: 4,
-      name: "Peaches",
-      artist: "Justin Bieber",
-      album: "Justice",
-    },
-    {
-      id: 5,
-      name: "Kiss Me More",
-      artist: "Doja Cat",
-      album: "Planet Her",
-    },
-    {
-      id: 6,
-      name: "Montero (Call Me By Your Name)",
-      artist: "Lil Nas X",
-      album: "Montero",
-    },
-  ]);
+  const search = useCallback((term) => {
+    Spotify.search(term).then(setSearchResults);
+  }, []);
 
   const addTrack = useCallback(
     (track) => {
@@ -70,24 +54,10 @@ function App() {
     setPlaylistName(name);
   }, []);
 
-  // dummy function to simulate the process
-  const Spotifydummy = {
-    savePlaylist: (playlistName, trackUris) => {
-      return new Promise((resolve) => {
-        console.log(`Saving playlist: ${playlistName}`);
-        console.log("Tracks:", trackUris);
-        setTimeout(() => {
-          console.log("Playlist saved successfully!");
-          resolve();
-        }, 1000); // Simulates a 1-second API call delay
-      });
-    },
-  };
-
   // sending the playlist to Spotify and resetting the local state
   const savePlaylist = useCallback(() => {
     const trackUris = playlistTracks.map((track) => track.uri);
-    Spotifydummy.savePlaylist(playlistName, trackUris).then(() => {
+    Spotify.savePlaylist(playlistName, trackUris).then(() => {
       setPlaylistName("New Playlist");
       setPlaylistTracks([]);
     });
@@ -102,7 +72,7 @@ function App() {
       </header>
       <main>
         <div className={styles.hero}>
-          <SearchBar placeholder="Enter a Song Title" />
+          <SearchBar placeholder="Enter a Song Title" onSearch={search} />
         </div>
         <div className={styles.appContent}>
           <SearchResults results={searchResults} onAdd={addTrack} />
