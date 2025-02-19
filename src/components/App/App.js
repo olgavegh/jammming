@@ -27,14 +27,26 @@ function App() {
     },
   ]);
 
-  const [playlistName, setPlaylistName] = useState("My Custom Playlist");
+  const [playlistName, setPlaylistName] = useState("New Playlist");
 
-  const [playlistTracks, setplaylistTracks] = useState([
+  const [playlistTracks, setPlaylistTracks] = useState([
     {
-      id: 12,
-      name: "1",
-      artist: "2",
-      album: "3",
+      id: 4,
+      name: "Peaches",
+      artist: "Justin Bieber",
+      album: "Justice",
+    },
+    {
+      id: 5,
+      name: "Kiss Me More",
+      artist: "Doja Cat",
+      album: "Planet Her",
+    },
+    {
+      id: 6,
+      name: "Montero (Call Me By Your Name)",
+      artist: "Lil Nas X",
+      album: "Montero",
     },
   ]);
 
@@ -43,13 +55,13 @@ function App() {
       if (playlistTracks.some((item) => item.id === track.id)) {
         return;
       }
-      setplaylistTracks([...playlistTracks, track]);
+      setPlaylistTracks([...playlistTracks, track]);
     },
     [playlistTracks]
   );
 
   const removeTrack = useCallback((track) => {
-    setplaylistTracks((prevList) =>
+    setPlaylistTracks((prevList) =>
       prevList.filter((item) => item.id !== track.id)
     );
   }, []);
@@ -57,6 +69,29 @@ function App() {
   const updatePlaylistName = useCallback((name) => {
     setPlaylistName(name);
   }, []);
+
+  // dummy function to simulate the process
+  const Spotify = {
+    savePlaylist: (playlistName, trackUris) => {
+      return new Promise((resolve) => {
+        console.log(`Saving playlist: ${playlistName}`);
+        console.log("Tracks:", trackUris);
+        setTimeout(() => {
+          console.log("Playlist saved successfully!");
+          resolve();
+        }, 1000); // Simulates a 1-second API call delay
+      });
+    },
+  };
+
+  // sending the playlist to Spotify and resetting the local state
+  const savePlaylist = useCallback(() => {
+    const trackUris = playlistTracks.map((track) => track.uri);
+    Spotify.savePlaylist(playlistName, trackUris).then(() => {
+      setPlaylistName("New Playlist");
+      setPlaylistTracks([]);
+    });
+  }, [playlistName, playlistTracks]);
 
   return (
     <div className={styles.body}>
@@ -76,6 +111,7 @@ function App() {
             playlistTracks={playlistTracks}
             onNameChange={updatePlaylistName}
             onRemove={removeTrack}
+            onSave={savePlaylist}
           />
         </div>
       </main>

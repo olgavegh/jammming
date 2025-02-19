@@ -48,3 +48,7 @@ In this project, I will build a React web application called Jammming. I will us
 
 - [x] Implement Playlist Renaming
 - Displaying the playlist title with the input element can allow users to click on the title of their playlist and edit it directly on the page.
+
+- [x] Implement Saving the Playlist to a User's Account
+- To enable users to save their custom playlist to Spotify, you need to extract the required track information and prepare the data for submission.
+- Each track has a unique uri (Uniform Resource Identifier) that Spotify uses to identify songs.
