@@ -3,7 +3,7 @@ import styles from "./App.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
-import { MdCropOriginal } from "react-icons/md";
+import Spotify from "../../util/Spotify";
 
 function App() {
   const [searchResults, setSearchResults] = useState([
@@ -71,7 +71,7 @@ function App() {
   }, []);
 
   // dummy function to simulate the process
-  const Spotify = {
+  const Spotifydummy = {
     savePlaylist: (playlistName, trackUris) => {
       return new Promise((resolve) => {
         console.log(`Saving playlist: ${playlistName}`);
@@ -87,7 +87,7 @@ function App() {
   // sending the playlist to Spotify and resetting the local state
   const savePlaylist = useCallback(() => {
     const trackUris = playlistTracks.map((track) => track.uri);
-    Spotify.savePlaylist(playlistName, trackUris).then(() => {
+    Spotifydummy.savePlaylist(playlistName, trackUris).then(() => {
       setPlaylistName("New Playlist");
       setPlaylistTracks([]);
     });

@@ -52,3 +52,11 @@ In this project, I will build a React web application called Jammming. I will us
 - [x] Implement Saving the Playlist to a User's Account
 - To enable users to save their custom playlist to Spotify, you need to extract the required track information and prepare the data for submission.
 - Each track has a unique uri (Uniform Resource Identifier) that Spotify uses to identify songs.
+
+- [x] Obtain a Spotify Access Token
+- To interact with the Spotify API, the app needs to obtain and store a user's access token.
+- 1. Store the token in a variable so we don't have to keep requesting it.
+- 2. Check if the token is already stored—if yes, return it.
+- 3. Extract the token from the URL when Spotify redirects the user after login.
+- 4. Handle expiration (clear the token after it expires).
+- 5. If there's no token, redirect the user to Spotify's login page.
