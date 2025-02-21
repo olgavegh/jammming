@@ -63,3 +63,7 @@ In this project, I will build a React web application called Jammming. I will us
 
 - [x] Implement Spotify Search Request
 - Connect the search bar to Spotify's API, allowing users to search for tracks and display results.
+
+- [x] Display a Spotify User's Avatar Picture
+- Integrating functionality to fetch and display the user's avatar picture from their Spotify profile.
+- Handling cases where the user does not have an avatar by providing a default image.

@@ -48,6 +48,10 @@
 
   --border-bottom: 1.5px solid var(--text-color-op4);
 }
+html {
+  font-size: clamp(0.625rem, 0.5179rem + 0.5357vw, 1rem);
+}
+
 * {
   box-sizing: border-box;
   width: 100%;
@@ -111,6 +115,7 @@ button {
     background-color: var(--primary-color);
     color: var(--neutral-color-light);
     text-transform: uppercase;
+    font-size: 0.8rem;
 
     &.primaryButton {
       background-color: var(--neutral-color-dark);

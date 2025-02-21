@@ -4,6 +4,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 import Spotify from "../../util/Spotify";
+import Profile from "../Profile/Profile";
 
 function App() {
   const [searchResults, setSearchResults] = useState([
@@ -69,6 +70,7 @@ function App() {
         <h1>
           Ja<span>mmm</span>ing
         </h1>
+        <Profile />
       </header>
       <main>
         <div className={styles.hero}>

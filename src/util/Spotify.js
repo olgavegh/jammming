@@ -8,38 +8,47 @@ const clientId = "23901c99a11a4996b3db3cc9c464ab7e";
 const redirectUri = "http://localhost:3000/"; // Adjust for production
 
 // Step 1: Stores the token
-let accessToken;
+let accessTokenCache;
 
 const Spotify = {
   // entry point to get the token
-  getAccessToken() {
-    // Step 2: If we already have the token, return it
-    if (accessToken) return accessToken;
+
+  // Step 2.1 just a check for the token
+  checkToken() {
+    // If we already have the token, return it
+    if (accessTokenCache) return accessTokenCache;
 
     // Step 3: Check for the access token match
     const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
     const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
     if (accessTokenMatch && expiresInMatch) {
-      accessToken = accessTokenMatch[1];
+      accessTokenCache = accessTokenMatch[1];
       const expiresIn = Number(expiresInMatch[1]);
-      window.setTimeout(() => (accessToken = ""), expiresIn * 1000);
+      window.setTimeout(() => (accessTokenCache = ""), expiresIn * 1000);
       window.history.pushState("Access Token", null, "/"); // This clears the parameters, allowing us to grab a new access token when it expires.
-      return accessToken;
+      return accessTokenCache;
     } else {
-      // Step 5: If no token, redirect user to Spotify authorization
-      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
-      window.location = accessUrl;
+      return null;
     }
+  },
+  // Step 2.2: Get the token.
+  getAccessToken() {
+    const accesstoken = Spotify.checkToken();
+    if (accesstoken) return accesstoken;
+
+    // Step 5: If no token, redirect user to Spotify authorization
+    const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+    window.location = accessUrl;
   },
 
   search(term) {
     // 1. Get Access Token
-    accessToken = Spotify.getAccessToken();
+    accessTokenCache = Spotify.getAccessToken();
 
     // 2. Fetch Request to Spotify API
     const encodedTerm = encodeURIComponent(term); // Convert it to URL-safe format
     const endpoint = `https://api.spotify.com/v1/search?type=track&q=${encodedTerm}`;
-    const headers = { Authorization: `Bearer ${accessToken}` };
+    const headers = { Authorization: `Bearer ${accessTokenCache}` };
     let userId;
 
     return fetch(endpoint, {
@@ -61,6 +70,26 @@ const Spotify = {
           uri: track.uri,
         }));
       });
+  },
+
+  getUserProfile() {
+    accessTokenCache = Spotify.checkToken();
+    if (accessTokenCache) {
+      const headers = { Authorization: `Bearer ${accessTokenCache}` };
+      const endpoint = "https://api.spotify.com/v1/me";
+
+      return fetch(endpoint, { headers })
+        .then((response) => response.json())
+        .then((jsonResponse) => {
+          if (jsonResponse.images && jsonResponse.images.length > 0) {
+            return jsonResponse.images[0].url;
+          } else {
+            return "https://via.placeholder.com/150"; // Placeholder image URL
+          }
+        });
+    } else {
+      return null;
+    }
   },
 };
 
