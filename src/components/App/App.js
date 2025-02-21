@@ -55,7 +55,6 @@ function App() {
     setPlaylistName(name);
   }, []);
 
-  // sending the playlist to Spotify and resetting the local state
   const savePlaylist = useCallback(() => {
     const trackUris = playlistTracks.map((track) => track.uri);
     Spotify.savePlaylist(playlistName, trackUris).then(() => {

@@ -67,3 +67,7 @@ In this project, I will build a React web application called Jammming. I will us
 - [x] Display a Spotify User's Avatar Picture
 - Integrating functionality to fetch and display the user's avatar picture from their Spotify profile.
 - Handling cases where the user does not have an avatar by providing a default image.
+
+- [x] Save a User's Playlist
+- Allow users to save their custom playlist to their Spotify account.
+- Ensure the playlist data is correctly formatted and sent to Spotify's API.

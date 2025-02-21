@@ -91,6 +91,39 @@ const Spotify = {
       return null;
     }
   },
-};
+  savePlaylist(playlistName, trackUris) {
+    if (!playlistName || !trackUris.length) return;
+    const accessTokenCache = Spotify.getAccessToken();
 
+    const headers = { Authorization: `Bearer ${accessTokenCache}` };
+    const endpoint = "https://api.spotify.com/v1/me";
+
+    let userId;
+
+    return fetch(endpoint, { headers })
+      .then((response) => response.json())
+      .then((jsonResponse) => {
+        userId = jsonResponse.id;
+        const endpointPlaylist = `https://api.spotify.com/v1/users/${userId}/playlists`;
+        return fetch(endpointPlaylist, {
+          headers: headers,
+          method: "POST",
+          body: JSON.stringify({
+            name: playlistName,
+            description: "Created with Jammming!",
+          }),
+        })
+          .then((response) => response.json())
+          .then((jsonResponse) => {
+            const playListId = jsonResponse.id;
+            const endpointPlaylistTracks = `https://api.spotify.com/v1/users/${userId}/playlists/${playListId}/tracks`;
+            return fetch(endpointPlaylistTracks, {
+              headers: headers,
+              method: "POST",
+              body: JSON.stringify({ uris: trackUris }),
+            });
+          });
+      });
+  },
+};
 export default Spotify;
