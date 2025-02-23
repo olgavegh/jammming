@@ -4,8 +4,10 @@
 // Check if a valid token exists.
 // Redirect users to Spotify’s authentication page if needed.
 
+import packageJson from "../../package.json";
+
 const clientId = "23901c99a11a4996b3db3cc9c464ab7e";
-const redirectUri = window.location.href; // Adjust for production
+const redirectUri = packageJson.homepage;
 
 // Step 1: Stores the token
 let accessTokenCache;
