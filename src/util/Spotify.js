@@ -7,7 +7,11 @@
 import packageJson from "../../package.json";
 
 const clientId = "23901c99a11a4996b3db3cc9c464ab7e";
-const redirectUri = packageJson.homepage;
+// correctly set for both local development and production deployment
+const redirectUri =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000/"
+    : packageJson.homepage;
 
 // Step 1: Stores the token
 let accessTokenCache;
