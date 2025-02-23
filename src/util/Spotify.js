@@ -5,7 +5,7 @@
 // Redirect users to Spotify’s authentication page if needed.
 
 const clientId = "23901c99a11a4996b3db3cc9c464ab7e";
-const redirectUri = "http://localhost:3000/"; // Adjust for production
+const redirectUri = window.location.href; // Adjust for production
 
 // Step 1: Stores the token
 let accessTokenCache;
