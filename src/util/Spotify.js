@@ -10,7 +10,7 @@ const clientId = "23901c99a11a4996b3db3cc9c464ab7e";
 // correctly set for both local development and production deployment
 const redirectUri =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:3000/"
+    ? `http://localhost:3000/${packageJson.name}`
     : packageJson.homepage;
 
 // Step 1: Stores the token
@@ -31,7 +31,7 @@ const Spotify = {
       accessTokenCache = accessTokenMatch[1];
       const expiresIn = Number(expiresInMatch[1]);
       window.setTimeout(() => (accessTokenCache = ""), expiresIn * 1000);
-      window.history.pushState("Access Token", null, "/"); // This clears the parameters, allowing us to grab a new access token when it expires.
+      window.history.pushState("Access Token", null, redirectUri); // This clears the parameters, allowing us to grab a new access token when it expires.
       return accessTokenCache;
     } else {
       return null;
