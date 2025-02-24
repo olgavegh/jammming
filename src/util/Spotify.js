@@ -90,7 +90,7 @@ const Spotify = {
           if (jsonResponse.images && jsonResponse.images.length > 0) {
             return jsonResponse.images[0].url;
           } else {
-            return "https://via.placeholder.com/150"; // Placeholder image URL
+            return "https://api.dicebear.com/9.x/identicon/svg?seed=Kimberly"; // Placeholder image URL
           }
         });
     } else {
