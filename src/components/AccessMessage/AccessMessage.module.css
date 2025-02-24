@@ -1,0 +1,19 @@
+.accessMessage {
+  display: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #149714;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  text-align: center;
+  padding: 0.8rem;
+
+  button {
+    margin-left: 1em;
+    padding: 1em;
+    font-size: 0.7em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+}

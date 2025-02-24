@@ -5,6 +5,7 @@ import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 import Spotify from "../../util/Spotify";
 import Profile from "../Profile/Profile";
+import AccessMessage from "../AccessMessage/AccessMessage";
 
 function App() {
   const [searchResults, setSearchResults] = useState([
@@ -71,6 +72,7 @@ function App() {
         </h1>
         <Profile />
       </header>
+      <AccessMessage />
       <main>
         <div className={styles.hero}>
           <SearchBar placeholder="Enter a Song Title" onSearch={search} />
