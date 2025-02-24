@@ -4,6 +4,15 @@
 
 In this project, I will build a React web application called Jammming. I will use your knowledge of React components, passing state, and requests with the Spotify API to build a website that allows users to search the Spotify library, create a custom playlist, then save it to their Spotify account.
 
+🚀 Accessing This App
+
+This app is currently in development mode and not publicly available.
+
+🔹 Want to try it?
+
+Send me your email address, and I'll grant you access.
+A banner will appear at the top of the page with this information when you visit the site.
+
 ![Jammming Project Preview](https://static-assets.codecademy.com/Courses/react/projects/previews/jamming-project-four-three-preview.gif)
 
 ## Features
