@@ -9,6 +9,15 @@
     margin-bottom: 0.4rem;
   }
 
+  .preview {
+    margin-right: 1rem;
+
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
   .trackAction {
     background: transparent;
     color: var(--text-color-op8);

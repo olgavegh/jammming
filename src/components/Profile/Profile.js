@@ -12,7 +12,9 @@ const Profile = () => {
   return (
     <div className={styles.profile}>
       {userUrl ? (
-        userUrl && <img src={userUrl} alt="Spotify Avatar" />
+        userUrl && (
+          <img className={styles.avatar} src={userUrl} alt="Spotify Avatar" />
+        )
       ) : (
         <button className="secondaryButton " onClick={Spotify.getAccessToken()}>
           Login

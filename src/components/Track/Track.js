@@ -28,8 +28,18 @@ const Track = (props) => {
     }
   };
 
+  if (!props.track.image) {
+    return (props.track.image =
+      "https://api.dicebear.com/9.x/identicon/svg?seed=Kimberly");
+  }
+
   return (
     <div className={style.track}>
+      <img
+        src={props.track.image}
+        className={style.preview}
+        alt="track preview"
+      />
       <div className={style.trackinfo}>
         <h3>{props.track.name}</h3>
         <p>

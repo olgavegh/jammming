@@ -67,10 +67,11 @@ const Spotify = {
         if (!jsonResponse.tracks) {
           return [];
         }
-
+        console.log(jsonResponse.tracks.items);
         return jsonResponse.tracks.items.map((track) => ({
           id: track.id,
           name: track.name,
+          image: track.album.images[0].url,
           artist: track.artists[0].name,
           album: track.album.name,
           uri: track.uri,
@@ -88,7 +89,7 @@ const Spotify = {
         .then((response) => response.json())
         .then((jsonResponse) => {
           if (jsonResponse.images && jsonResponse.images.length > 0) {
-            return jsonResponse.images[0].url;
+            return jsonResponse.images[1].url; // get medium sized image
           } else {
             return "https://api.dicebear.com/9.x/identicon/svg?seed=Kimberly"; // Placeholder image URL
           }
