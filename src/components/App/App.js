@@ -32,16 +32,32 @@ function App() {
   const [playlistName, setPlaylistName] = useState("New Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
-  const search = useCallback((term) => {
-    Spotify.search(term).then(setSearchResults);
-  }, []);
+  const handleSearch = useCallback(
+    (term) => {
+      Spotify.search(term).then((arrayTracks) => {
+        // avoid duplicates
+        const filteredTracks = arrayTracks.filter(
+          (track) =>
+            !playlistTracks.find((savedTrack) => savedTrack.uri === track.uri)
+        );
+        setSearchResults(filteredTracks);
+      });
+    },
+    [playlistTracks]
+  );
 
   const addTrack = useCallback(
     (track) => {
+      // avoid duplicates
       if (playlistTracks.some((item) => item.id === track.id)) {
         return;
       }
+      // add to Playlist
       setPlaylistTracks([...playlistTracks, track]);
+      // remove from Search Results
+      setSearchResults((prevResults) =>
+        prevResults.filter((item) => item.id !== track.id)
+      );
     },
     [playlistTracks]
   );
@@ -50,6 +66,8 @@ function App() {
     setPlaylistTracks((prevList) =>
       prevList.filter((item) => item.id !== track.id)
     );
+    // add to Search Results
+    setSearchResults((prevResults) => [...prevResults, track]);
   }, []);
 
   const updatePlaylistName = useCallback((name) => {
@@ -75,7 +93,7 @@ function App() {
       <AccessMessage />
       <main>
         <div className={styles.hero}>
-          <SearchBar placeholder="Enter a Song Title" onSearch={search} />
+          <SearchBar placeholder="Enter a Song Title" onSearch={handleSearch} />
         </div>
         <div className={styles.appContent}>
           <SearchResults results={searchResults} onAdd={addTrack} />
